@@ -16,12 +16,12 @@ void	ft_free_stack(t_stack *s)
 {
 	if (s->a)
 	{
-		ft_free(s->a);
+		free(s->a);
 		s->a = NULL;
 	}
 	if (s->b)
 	{
-		ft_free(s->b);
+		free(s->b);
 		s->b = NULL;
 	}
 }

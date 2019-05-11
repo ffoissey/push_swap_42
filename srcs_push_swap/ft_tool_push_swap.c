@@ -51,7 +51,7 @@ int		ft_third(long *tab, int size)
 	int		ret;
 
 	i = 0;
-	if (!(cpy = (long *)ft_malloc(sizeof(long) * size)))
+	if (!(cpy = (long *)malloc(sizeof(long) * size)))
 		return (tab[size - 1]);
 	while (i < size)
 	{
@@ -60,7 +60,7 @@ int		ft_third(long *tab, int size)
 	}
 	ft_insertsort_long(cpy, size);
 	ret = cpy[size - 1];
-	ft_free(cpy);
+	free(cpy);
 	return (ret);
 }
 
@@ -72,7 +72,7 @@ int		ft_med_stack(long *tab, int size)
 	int		tmp_size;
 
 	i = -1;
-	if (!(cpy = (long *)ft_malloc(sizeof(long) * size)))
+	if (!(cpy = (long *)malloc(sizeof(long) * size)))
 		return (tab[size - 1]);
 	while (++i < size)
 	{
@@ -89,13 +89,13 @@ int		ft_med_stack(long *tab, int size)
 	if (tmp_size < size)
 		size = tmp_size - 1;
 	ret = size > 0 ? cpy[size] : cpy[0];
-	ft_free(cpy);
+	free(cpy);
 	return (ret);
 }
 
 void	ft_cmd(int (*f)(t_stack *s, char *str), t_stack *s, char *str)
 {
 	f(s, str);
-	ft_joinfree(&s->buf, str, 1);
-	ft_joinfree(&s->buf, "\n", 1);
+	s->buf = ft_strjoinfree(s->buf, str, FIRST);
+	s->buf = ft_strjoinfree(s->buf, "\n", FIRST);
 }

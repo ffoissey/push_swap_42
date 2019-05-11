@@ -33,7 +33,7 @@ static long	*ft_dup_stack(long *tab, size_t size)
 	size_t	i;
 
 	i = 0;
-	if (!(s = (long *)ft_malloc(sizeof(long) * size)))
+	if (!(s = (long *)malloc(sizeof(long) * size)))
 		return (NULL);
 	while (i < size)
 	{
@@ -60,13 +60,13 @@ static int	ft_check_rotate(long *tab, size_t size, int which)
 	{
 		if (ft_is_good(tmp, size, which))
 		{
-			ft_free(tmp);
+			free(tmp);
 			return (i ? (int)i : -1);
 		}
 		ft_exec_rotate(&s, which == 1 ? "rb" : "ra");
 		i++;
 	}
-	ft_free(tmp);
+	free(tmp);
 	return (FALSE);
 }
 

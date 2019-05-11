@@ -44,8 +44,8 @@ static char	*ft_get_av_checker(char **av)
 		i = 0;
 		while (tab[i])
 		{
-			ft_joinfree(&s, tab[i++], 1);
-			ft_joinfree(&s, "\n", 1);
+			s = ft_strjoinfree(s, tab[i++], FIRST);
+			s = ft_strjoinfree(s, "\n", FIRST);
 		}
 		ft_free_tab_str(tab);
 		count++;

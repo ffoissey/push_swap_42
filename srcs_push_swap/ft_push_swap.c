@@ -43,8 +43,8 @@ static void	ft_join_tab(char **tab, char **s)
 			ft_putendl_fd("Error", 2);
 			exit(1);
 		}
-		ft_joinfree(s, tab[i], 1);
-		ft_joinfree(s, "\n", 1);
+		*s = ft_strjoinfree(*s, tab[i], FIRST);
+		*s = ft_strjoinfree(*s, "\n", FIRST);
 		i++;
 	}
 }
@@ -91,8 +91,7 @@ int			main(int ac, char **av)
 		ft_make_simple(&s, &s.buf);
 		ft_print_solution(s.buf);
 	}
-	ft_flush_memory();
-//	ft_free_stack(&s);
-//	ft_free_tab_str(arg);
+	ft_free_stack(&s);
+	ft_free_tab_str(arg);
 	return (0);
 }

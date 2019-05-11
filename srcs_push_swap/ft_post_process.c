@@ -39,14 +39,14 @@ static int	ft_reduce_push(t_stack *s, char **buf, char **tab, int which)
 	i = ft_how_push(tab, which, &tmp);
 	while (tmp > 0)
 	{
-		ft_joinfree(buf, which ? "pb\n" : "pa\n", 1);
+		*buf = ft_strjoinfree(*buf, which ? "pb\n" : "pa\n", FIRST);
 		tmp--;
 		s->size_a = which ? s->size_a - 1 : s->size_a + 1;
 		s->size_b = which ? s->size_b + 1 : s->size_b - 1;
 	}
 	while (tmp < 0)
 	{
-		ft_joinfree(buf, which ? "pa\n" : "pb\n", 1);
+		*buf = ft_strjoinfree(*buf, which ? "pa\n" : "pb\n", FIRST);
 		tmp++;
 		s->size_a = which ? s->size_a + 1 : s->size_a - 1;
 		s->size_b = which ? s->size_b - 1 : s->size_b + 1;
@@ -73,9 +73,11 @@ static int	ft_reduce_rotate(t_stack *s, char **buf, char **tab, int which)
 	while (tmp < 0)
 	{
 		if (which)
-			ft_joinfree(buf, ft_strequ(str, "rb") ? "rrb\n" : "rb\n", 1);
+			*buf = ft_strjoinfree(*buf, ft_strequ(str, "rb")
+					? "rrb\n" : "rb\n", FIRST);
 		else
-			ft_joinfree(buf, ft_strequ(str, "ra") ? "rra\n" : "ra\n", 1);
+			*buf = ft_strjoinfree(*buf, ft_strequ(str, "ra")
+					? "rra\n" : "ra\n", FIRST);
 		tmp++;
 	}
 	return (i);

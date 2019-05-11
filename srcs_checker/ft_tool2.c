@@ -71,9 +71,9 @@ void	ft_set_a_and_b(t_stack *s, char **av, int ac)
 	i = 0;
 	s->size_a = s->size;
 	s->size_b = 0;
-	if (!(s->a = (long *)ft_malloc(sizeof(long) * s->size)))
+	if (!(s->a = (long *)malloc(sizeof(long) * s->size)))
 		ft_exit(s);
-	if (!(s->b = (long *)ft_malloc(sizeof(long) * s->size)))
+	if (!(s->b = (long *)malloc(sizeof(long) * s->size)))
 		ft_exit(s);
 	tmp = ac;
 	while (tmp)

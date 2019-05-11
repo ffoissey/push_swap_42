@@ -24,13 +24,15 @@ SRCS_COM = $(patsubst %,srcs_com/ft_%.c,$(FILE_COM))
 OBJS_COM = $(patsubst %,objs_checker/ft_%.o,$(FILE_COM))
 DIR_OBJS_CHECKER = objs_checker/
 DIR_OBJS_PUSH_SWAP = objs_push_swap/
-INCLUDES = -I includes/ -I libft/includes
-HEAD = libft/includes/libft.h libft/includes/get_next_line.h \
-		libft/includes/ft_printf.h libft/includes/ft_malloc.h \
-		libft/includes/ft_double.h includes/checker.h includes/push_swap.h \
-		includes/common.h
+INCLUDES += -I includes/
+INCLUDES += -I libft/includes
+INCLUDES += -I libft/includes/get_next_line
+INCLUDES += -I libft/includes/ft_printf
+HEAD += includes/checker.h
+HEAD += includes/push_swap.h
+HEAD +=	includes/common.h
 CFLAGS = -Wall -Werror -Wextra
-CC = gcc
+CC = clang
 
 all: $(CHECKER) $(PUSH_SWAP)
 

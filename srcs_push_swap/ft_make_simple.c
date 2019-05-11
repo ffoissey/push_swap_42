@@ -36,8 +36,8 @@ static int	ft_forgot(t_stack *s, char **buf, char **tab, int i)
 		s->size_a--;
 		s->size_b++;
 	}
-	ft_joinfree(buf, tab[i], 1);
-	ft_joinfree(buf, "\n", 1);
+	*buf = ft_strjoinfree(*buf, tab[i], FIRST);
+	*buf = ft_strjoinfree(*buf, "\n", FIRST);
 	return (0);
 }
 
@@ -54,13 +54,13 @@ static int	ft_loop_tab(t_stack *s, char **buf, char **tab)
 			;
 		else if ((ft_strequ(tab[i], "sa") && ft_strequ(tab[i + 1], "sb"))
 				|| (ft_strequ(tab[i], "sb") && ft_strequ(tab[i + 1], "sa")))
-			ft_joinfree(buf, "ss\n", 1);
+			*buf = ft_strjoinfree(*buf, "ss\n", FIRST);
 		else if ((ft_strequ(tab[i], "ra") && ft_strequ(tab[i + 1], "rb"))
 				|| (ft_strequ(tab[i], "rb") && ft_strequ(tab[i + 1], "ra")))
-			ft_joinfree(buf, "rr\n", 1);
+			*buf = ft_strjoinfree(*buf, "rr\n", FIRST);
 		else if ((ft_strequ(tab[i], "rra") && ft_strequ(tab[i + 1], "rrb"))
 				|| (ft_strequ(tab[i], "rrb") && ft_strequ(tab[i + 1], "rra")))
-			ft_joinfree(buf, "rrr\n", 1);
+			*buf = ft_strjoinfree(*buf, "rrr\n", FIRST);
 		else
 			i += (ft_forgot(s, buf, tab, i) - 1);
 		i = ret ? i + ret : i + 2;
@@ -82,8 +82,8 @@ void		ft_make_simple(t_stack *s, char **buf)
 	i = ft_loop_tab(s, buf, tab);
 	if (tab[i])
 	{
-		ft_joinfree(buf, tab[i], 1);
-		ft_joinfree(buf, "\n", 1);
+		*buf = ft_strjoinfree(*buf, tab[i], FIRST);
+		*buf = ft_strjoinfree(*buf, "\n", FIRST);
 	}
 	ft_free_tab_str(tab);
 }
